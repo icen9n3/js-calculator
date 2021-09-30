@@ -7,7 +7,9 @@
     justify-content: center;
 }
 
-
+span{
+    font-size:30px
+}
 
 #outerContainer {
     background-color: #cecfc2d8;
@@ -35,10 +37,11 @@
     background-color:rgba(0, 0, 0, 0.493);
     border: 1px solid rgba(128, 128, 128, 0.425);
     height:35px;
-    width:325px;
+    width:320px;
     color:rgba(192, 192, 192, 0.5);
     display:flex;
     justify-content:end;
+
     padding-bottom:5px;
     margin: 7px 0px 5px 0px;
     
