@@ -1,36 +1,93 @@
+
+#background {
+    height:95vh;
+    width:95vw;
+    background-color:lightsteelblue;
+    display:flex;
+    justify-content: center;
+}
+
+
+
 #outerContainer {
     background-color: #cecfc2d8;
     width: 300px;
     height: 500px;
+    display:flex;
+    justify-content: center;
+    margin-top:150px;
+    padding: 75px 10px 15px;
+    border-radius: 10px 10px 5px 5px;
+    
+    
+    
+}
+/*    
+#hood{
+    height:100px;
+    width:300px;
+    background-color:green;} */
+    
+   
+
+
+#logo {
+    background-color:rgba(0, 0, 0, 0.493);
+    border: 1px solid gray;
+    height:35px;
+    width:300px;
+    color:rgba(192, 192, 192, 0.589);
+    display:flex;
+    justify-content:flex-end;
+    
 }
 
 #innerContainer{
     background-color:black;
-    height: 400px;
-    margin: 25px;
+    height: 500px;
+    padding-top: 0px;
     font-size: 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
 button{
-    height:50px;
-    width:50px;
+    margin:4px;
+    height:60px;
+    width:60px;
     font-size: 20px;
+    border-radius: 5px;
+    border-color:mistyrose
 }
 
 #display{
 
-    width:250px;
-    height:50px;
-    background-color: red;
+    color:rgba(255, 10, 10, 0.842);
+    font-size:45px;
+    width:300px;
+    height:75px;
+    background-color: rgb(95, 8, 8);
+    border-radius: 30px 30px 0px 0px;
+    border: 1px solid darkred;
+
+    display:flex;
+    justify-content: center;
 }
 
 
 
- #row1{
+ #row1{display:flex;
+    justify-content: center;
 
  }
  #clear{
+    background-color: #cecfc2d8;
+
+ }
+
+ #clearEntry {
     background-color: #cecfc2d8;
 
  }
@@ -40,12 +97,13 @@ button{
  }
 #backspace{
     background-color: #cecfc2d8;
-    width:100px;
+ 
 
 }
 
           
-#row2{
+#row2{display:flex;
+    justify-content: center;
 
 }
 #num7{
@@ -64,6 +122,8 @@ button{
 }
     
 #row3{
+    display:flex;
+    justify-content: center;
 
 }
 #num4{
@@ -81,7 +141,8 @@ button{
 }
     
 #row4{
-
+    display:flex;
+    justify-content: center;
 }
 #num1{
     background-color:white;
@@ -97,13 +158,14 @@ button{
 
 }
    
-#row5{
+#row5{display:flex;
+    justify-content: center;
 
 }
 #num0{
     background-color:white;
     width:90px;
-    height:50px;
+    height:60px;
 
 }
 #decimal{
@@ -112,7 +174,7 @@ button{
 
 #equals{
     background-color:orange;
-    width:90px;
-    height:50px;
+    width:95px;
+    height:60px;
     
 }  
