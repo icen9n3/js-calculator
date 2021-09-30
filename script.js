@@ -1,33 +1,42 @@
-
+let decimalAllowed = true;
 let firstNumber = 0;
 let operator, plus;
 
  const add = function(firstNumber, secondNumber)
-{ x = firstNumber + secondNumber;}
+{ x = firstNumber + secondNumber;};
 // display.textContent = sum;
 
 const subtract = function (firstNumber, secondNumber)
-{ x = firstNumber - secondNumber;}
+{ x = firstNumber - secondNumber;};
 
 let multiply = function (firstNumber, secondNumber)
-{return firstNumber * secondNumber}
+{x = firstNumber * secondNumber};
 
 let divide = function (firstNumber, secondNumber)
-{return firstNumber/secondNumber} 
+{x = firstNumber/secondNumber} ;
 
 let display = document.getElementById("display")
 
+const decimal = document.querySelector("#decimal");
+decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
+
+function saveDisplayValue() {
+  
+
+}
+
+function updateDisplay(x){display.textContent =  display.innerText + x; 
+   if (decimalAllowed == false)   
+   {displayValue = parseFloat(display.textContent)}
+   else
+   {displayValue = parseInt(display.innerText);}};
 
 
 
 
 
-
-
-
-
-function updateDisplay(x){display.textContent =  display.innerText + x; displayValue = parseInt(display.innerText);}
-function clearDisplay(){display.textContent = ""}
+function clearDisplay(){display.textContent = "";
+decimalAllowed = true;}
 
 const numberZero = document.querySelector("#num0");
 numberZero.addEventListener("click", function(){updateDisplay("0")})
@@ -60,6 +69,9 @@ const numberNine = document.querySelector("#num9");
 numberNine.addEventListener("click", function(){updateDisplay("9")})
 
 
+
+
+
 const clearEntry = document.querySelector("#clearEntry");
 clearEntry.addEventListener("click", function(){clearDisplay()})
 
@@ -71,6 +83,7 @@ function clear(){
   secondNumber = "";
   operator = "";
   clearDisplay();
+  
 }
 
 const addBtn = document.querySelector("#addition");
@@ -82,18 +95,40 @@ subtractBtn.addEventListener("click", function(){selectSubtract()})
 const equalBtn = document.querySelector("#equals");
   equalBtn.addEventListener("click", operate);
 
+  const multiplyBtn = document.querySelector("#multiply");
+multiplyBtn.addEventListener("click", function(){selectMultiply()})
+
+const divideBtn = document.querySelector("#divide");
+divideBtn.addEventListener("click", function(){selectDivide()})
+
 
 
 function selectAdd(){
   firstNumber = displayValue;
   operator = add;
   clearDisplay();
+  
 }
 
 function selectSubtract(){
   firstNumber = displayValue;
   operator = subtract;
   clearDisplay();
+  
+}
+
+function selectMultiply(){
+  firstNumber = displayValue;
+  operator = multiply;
+  clearDisplay();
+  
+}
+
+function selectDivide(){
+  firstNumber = displayValue;
+  operator = divide;
+  clearDisplay();
+
 }
 
 
@@ -103,8 +138,17 @@ function operate()
  operator(firstNumber, secondNumber)
   display.textContent = x;
   displayValue = x; 
+  operator = "";
 
 } 
+
+function decimalCheck(){
+  if (decimalAllowed === true)
+{ updateDisplay(".");
+decimalAllowed = false}
+
+
+}
 
 
 
