@@ -1,0 +1,118 @@
+#outerContainer {
+    background-color: #cecfc2d8;
+    width: 300px;
+    height: 500px;
+}
+
+#innerContainer{
+    background-color:black;
+    height: 400px;
+    margin: 25px;
+    font-size: 30px;
+}
+
+
+button{
+    height:50px;
+    width:50px;
+    font-size: 20px;
+}
+
+#display{
+
+    width:250px;
+    height:50px;
+    background-color: yellow;
+}
+
+
+
+ #row1{
+
+ }
+ #clear{
+    background-color: #cecfc2d8;
+
+ }
+ #divide{
+    background-color: #cecfc2d8;
+
+ }
+#backspace{
+    background-color: #cecfc2d8;
+    width:100px;
+
+}
+
+          
+#row2{
+
+}
+#num7{
+    background-color:white;
+
+}
+#num8{
+    background-color:white;
+}
+#num9{
+    background-color:white;
+}
+#multiply{
+    background-color: #cecfc2d8;
+
+}
+    
+#row3{
+
+}
+#num4{
+    background-color:white;
+}
+#num5{
+    background-color:white;
+}
+#num6{
+    background-color:white;
+}
+#subtract{
+    background-color: #cecfc2d8;
+
+}
+    
+#row4{
+
+}
+#num1{
+    background-color:white;
+}
+#num2{
+    background-color:white;
+}
+#num3{
+    background-color:white;
+}
+#addition{
+    background-color: #cecfc2d8;
+
+}
+   
+#row5{
+
+}
+#num0{
+    background-color:white;
+    width:90px;
+    height:50px;
+
+}
+#decimal{
+    background-color:white;
+}
+
+#equals{
+    background-color:orange;
+    width:90px;
+    height:50px;
+    
+}  
