@@ -6,6 +6,9 @@
     display:flex;
     justify-content: center;
 }
+@font-face {
+    font-family: alarm;
+    src: url(font/alarm.ttf);}
 
 span{
     font-size:30px;
@@ -82,7 +85,7 @@ button{
 #display{
 
     color:rgb(255, 10, 10);
-    font-size:45px;
+    font-size:55px;
     width:320px;
     height:65px;
     background-color: rgb(95, 8, 8);
@@ -91,6 +94,7 @@ button{
 
     display:flex;
     justify-content: center;
+    font-family: alarm;
 }
 
 
