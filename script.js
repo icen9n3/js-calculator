@@ -1,10 +1,12 @@
 let decimalAllowed = true;
 let firstNumber = 0;
 let operator, plus;
+const numberBtn = document.querySelectorAll(".num")
 
+
+//operator functions
  const add = function(firstNumber, secondNumber)
 { x = firstNumber + secondNumber;};
-// display.textContent = sum;
 
 const subtract = function (firstNumber, secondNumber)
 { x = firstNumber - secondNumber;};
@@ -13,17 +15,18 @@ let multiply = function (firstNumber, secondNumber)
 {x = firstNumber * secondNumber};
 
 let divide = function (firstNumber, secondNumber)
-{x = firstNumber/secondNumber} ;
+{x = firstNumber/secondNumber};
+
+
+
 
 let display = document.getElementById("display")
-
 const decimal = document.querySelector("#decimal");
+
 decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
 
-function saveDisplayValue() {
-  
 
-}
+
 
 function updateDisplay(x){display.textContent =  display.innerText + x; 
    if (decimalAllowed == false)   
@@ -32,11 +35,21 @@ function updateDisplay(x){display.textContent =  display.innerText + x;
    {displayValue = parseInt(display.innerText);}};
 
 
+function decimalCheck(){
+  if (decimalAllowed === true)
+{ updateDisplay(".");
+decimalAllowed = false}}
+
+
+function clearDisplay(){
+display.textContent = "";
+decimalAllowed = true;
+}
+
+   
 
 
 
-function clearDisplay(){display.textContent = "";
-decimalAllowed = true;}
 
 const numberZero = document.querySelector("#num0");
 numberZero.addEventListener("click", function(){updateDisplay("0")})
@@ -82,18 +95,18 @@ function clear(){
   firstNumber = "";
   secondNumber = "";
   operator = "";
+  last = displayValue; 
+  lastNum = String(last).slice(-1);   
   clearDisplay();
-  
+ 
 }
 
 const addBtn = document.querySelector("#addition");
-addBtn.addEventListener("click", function(){selectAdd()})
+addBtn.addEventListener("click", function(){selectAdd()});
+
 
 const subtractBtn = document.querySelector("#subtract");
 subtractBtn.addEventListener("click", function(){selectSubtract()})
-
-const equalBtn = document.querySelector("#equals");
-  equalBtn.addEventListener("click", operate);
 
   const multiplyBtn = document.querySelector("#multiply");
 multiplyBtn.addEventListener("click", function(){selectMultiply()})
@@ -103,53 +116,88 @@ divideBtn.addEventListener("click", function(){selectDivide()})
 
 
 
+const equalBtn = document.querySelector("#equals");
+  equalBtn.addEventListener("click", operate);
+
+
 function selectAdd(){
   firstNumber = displayValue;
   operator = add;
   clearDisplay();
-  
+  valueCheck(0);
 }
 
 function selectSubtract(){
   firstNumber = displayValue;
   operator = subtract;
-  clearDisplay();
+  clearDisplay()
+  valueCheck(0);
   
 }
 
 function selectMultiply(){
   firstNumber = displayValue;
   operator = multiply;
-  clearDisplay();
+  clearDisplay()
+  valueCheck(0);
   
 }
 
 function selectDivide(){
   firstNumber = displayValue;
   operator = divide;
-  clearDisplay();
+  clearDisplay()
+  valueCheck(0);
 
 }
 
 
 function operate()
 { 
+
+
   secondNumber = displayValue;
- operator(firstNumber, secondNumber)
+ operator(firstNumber, secondNumber);
   display.textContent = x;
-  displayValue = x; 
+  displayValue = x;
+   
+  valueCheck(1);
   operator = "";
+}
 
-} 
 
-function decimalCheck(){
-  if (decimalAllowed === true)
-{ updateDisplay(".");
-decimalAllowed = false}
 
+  function reset() {
+   var last = display.innerText 
+    clear();
+    valueCheck(0)
+    updateDisplay(lastNum)
+    
+
+  }
+
+
+
+ function valueCheck(value) {
+if (value == 1)
+{
+
+for(i=0; i < numberBtn.length; i++)
+  {buttonLoop = numberBtn[i];
+    buttonLoop.addEventListener("click",reset);}
+  }
+
+else if  
+
+(value == 0)
+ {
+for(i=0; i < numberBtn.length; i++)
+    {buttonLoop = numberBtn[i];
+      buttonLoop.removeEventListener("click",reset);}
+    }
 
 }
 
 
 
-  
+
