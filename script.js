@@ -119,6 +119,10 @@ function clear(){
  
 }
 
+
+
+
+
 function backspace() {
 editValue = displayField.innerText;
 displayField.innerText = editValue.substring(0, editValue.length - 1)
@@ -153,32 +157,33 @@ const equalBtn = document.querySelector("#equals");
 function selectAdd(){
   firstNumber = displayValue;
   operator = add;
-  clearDisplay();
-  resetCheck(0);
+  resetCheck(0);  
+  operandCheck(1);
+ 
 }
+
 
 function selectSubtract(){
   firstNumber = displayValue;
   operator = subtract;
-  clearDisplay()
-  resetCheck(0);
   
+  resetCheck(0);
+  operandCheck(1)
 }
 
 function selectMultiply(){
   firstNumber = displayValue;
   operator = multiply;
-  clearDisplay()
-  resetCheck(0);
   
+  resetCheck(0);
+  operandCheck(1)
 }
 
 function selectDivide(){
   firstNumber = displayValue;
-  operator = divide;
-  clearDisplay()
+  operator = divide;  
   resetCheck(0);
-
+  operandCheck(1)
 }
 
 
@@ -222,6 +227,41 @@ else if
       buttonLoop.removeEventListener("click",reset);}
     }}
 
+
+
+
+
+
+
+
+
+
+
+function operandCheck(value) {
+    if (value == 1)
+{
+
+for(i=0; i < numberBtn.length; i++)
+  {buttonLoop = numberBtn[i];
+    buttonLoop.addEventListener("click",operandUpdate);}
+  }
+
+else if 
+(value == 0)
+ {for(i=0; i < numberBtn.length; i++)
+    {buttonLoop = numberBtn[i];
+      buttonLoop.removeEventListener("click",operandUpdate);}
+    }}
+
+
+function operandUpdate() {
+  last = displayValue; 
+  lastNum = String(last).slice(-1);   
+  clearDisplay();
+  operandCheck(0);
+  updateDisplay(lastNum)
+
+}
 
 
 
