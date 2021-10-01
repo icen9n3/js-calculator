@@ -4,6 +4,9 @@ let operator, plus;
 const numberBtn = document.querySelectorAll(".num")
 
 
+
+
+
 //operator functions
  const add = function(firstNumber, secondNumber)
 { x = firstNumber + secondNumber;};
@@ -15,7 +18,9 @@ let multiply = function (firstNumber, secondNumber)
 {x = firstNumber * secondNumber};
 
 let divide = function (firstNumber, secondNumber)
-{x = firstNumber/secondNumber};
+{y = firstNumber/secondNumber;
+  x = (parseFloat(y).toPrecision(7));
+  decimalAllowed = false;};
 
 
 
@@ -29,10 +34,19 @@ decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
 
 
 function updateDisplay(x){display.textContent =  display.innerText + x; 
+
    if (decimalAllowed == false)   
-   {displayValue = parseFloat(display.textContent)}
+   {if(display.innerText.length > 10)
+    {display.innerText = "error";}
    else
-   {displayValue = parseInt(display.innerText);}};
+    {displayValue = parseFloat(display.textContent)}}   
+   
+   else
+   {if(display.innerText.length > 10)
+    {display.innerText = "error";
+  resetCheck(1)}
+    else    
+    {displayValue = parseInt(display.innerText)};}};
 
 
 function decimalCheck(){
@@ -84,13 +98,6 @@ numberNine.addEventListener("click", function(){updateDisplay("9")})
 
 
 
-
-const clearEntry = document.querySelector("#clearEntry");
-clearEntry.addEventListener("click", function(){clearDisplay()})
-
-const clearAll = document.querySelector("#clear");
-clearAll.addEventListener("click", function(){clear()})
-
 function clear(){
   firstNumber = "";
   secondNumber = "";
@@ -116,6 +123,13 @@ divideBtn.addEventListener("click", function(){selectDivide()})
 
 
 
+const clearEntry = document.querySelector("#clearEntry");
+clearEntry.addEventListener("click", function(){clearDisplay()})
+
+const clearAll = document.querySelector("#clear");
+clearAll.addEventListener("click", function(){clear()})
+
+
 const equalBtn = document.querySelector("#equals");
   equalBtn.addEventListener("click", operate);
 
@@ -124,14 +138,14 @@ function selectAdd(){
   firstNumber = displayValue;
   operator = add;
   clearDisplay();
-  valueCheck(0);
+  resetCheck(0);
 }
 
 function selectSubtract(){
   firstNumber = displayValue;
   operator = subtract;
   clearDisplay()
-  valueCheck(0);
+  resetCheck(0);
   
 }
 
@@ -139,7 +153,7 @@ function selectMultiply(){
   firstNumber = displayValue;
   operator = multiply;
   clearDisplay()
-  valueCheck(0);
+  resetCheck(0);
   
 }
 
@@ -147,7 +161,7 @@ function selectDivide(){
   firstNumber = displayValue;
   operator = divide;
   clearDisplay()
-  valueCheck(0);
+  resetCheck(0);
 
 }
 
@@ -158,19 +172,23 @@ function operate()
 
   secondNumber = displayValue;
  operator(firstNumber, secondNumber);
-  display.textContent = x;
-  displayValue = x;
+ sizeCheck = String(x).length;
+ if( sizeCheck > 10)
+  {display.textContent = (parseFloat(x).toPrecision(5));}
+  else 
+  {display.textContent = x;}
+  displayValue = x ;
    
-  valueCheck(1);
+  resetCheck(1);
   operator = "";
 }
 
 
 
   function reset() {
-   var last = display.innerText 
+    let last = display.innerText 
     clear();
-    valueCheck(0)
+    resetCheck(0)
     updateDisplay(lastNum)
     
 
@@ -178,7 +196,7 @@ function operate()
 
 
 
- function valueCheck(value) {
+ function resetCheck(value) {
 if (value == 1)
 {
 
@@ -200,4 +218,24 @@ for(i=0; i < numberBtn.length; i++)
 
 
 
+const backspaceBtn = document.querySelector("#backspace");
+  backspaceBtn.addEventListener("click", backspace);
+
+
+function backspace() {
+editValue = display.innerText;
+display.innerText = editValue.substring(0, editValue.length - 1)
+
+if (decimalAllowed == false)   
+{if(display.innerText.length > 10)
+ {display.innerText = "error";}
+else
+ {displayValue = parseFloat(display.textContent)}}   
+
+else
+{if(display.innerText.length > 10)
+ {display.innerText = "error";
+resetCheck(1)}
+ else    
+ {displayValue = parseInt(display.innerText)};}};
 
