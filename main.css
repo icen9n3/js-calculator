@@ -2,7 +2,7 @@
 #background {
     height:95vh;
     width:95vw;
-    /* background-color:lightsteelblue; */
+    background-color:lightsteelblue;
     display:flex;
     justify-content: center;
 }
@@ -13,6 +13,8 @@
 span{
     font-size:30px;
 }
+
+
 .background {
     position:absolute;
     width:95vw;
@@ -58,7 +60,7 @@ span{
 }
 
 #innerContainer{
-    background-color:black;
+    background-color:rgba(0, 0, 0, 0.932);
     height: 500px;
     width:325px;
     padding-top: 0px;
@@ -97,7 +99,11 @@ button{
     font-family: alarm;
 }
 
-
+#displayField{
+   
+    padding-top: 10px;
+    width:280px;
+}
 
  #row1{display:flex;
     justify-content: center;
@@ -128,16 +134,7 @@ button{
     justify-content: center;
 
 }
-#num7{
-    background-color:white;
 
-}
-#num8{
-    background-color:white;
-}
-#num9{
-    background-color:white;
-}
 #multiply{
     background-color: #cecfc2d8;
 
@@ -148,15 +145,7 @@ button{
     justify-content: center;
 
 }
-#num4{
-    background-color:white;
-}
-#num5{
-    background-color:white;
-}
-#num6{
-    background-color:white;
-}
+
 #subtract{
     background-color: #cecfc2d8;
 
@@ -166,15 +155,7 @@ button{
     display:flex;
     justify-content: center;
 }
-#num1{
-    background-color:white;
-}
-#num2{
-    background-color:white;
-}
-#num3{
-    background-color:white;
-}
+
 #addition{
     background-color: #cecfc2d8;
 
@@ -200,3 +181,7 @@ button{
     height:60px;
     
 }  
+
+.num{
+    background-color: white;
+}
