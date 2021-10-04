@@ -9,38 +9,6 @@ for(i = 0; i < numberBtn.length; i++)
 addNumBtn.addEventListener("click", function(){updateDisplay(addNumBtn.innerText)})}
 
 
-// const numberZero = document.querySelector("#num0");
-// numberZero.addEventListener("click", function(){updateDisplay("0")})
-
-// const numberOne = document.querySelector("#num1");
-// numberOne.addEventListener("click", function(){updateDisplay("1")})
-
-// const numberTwo = document.querySelector("#num2");
-// numberTwo.addEventListener("click", function(){updateDisplay("2")})
-
-// const numberThree = document.querySelector("#num3");
-// numberThree.addEventListener("click", function(){updateDisplay("3")})
-
-// const numberFour = document.querySelector("#num4");
-// numberFour.addEventListener("click", function(){updateDisplay("4")})
-
-// const numberFive = document.querySelector("#num5");
-// numberFive.addEventListener("click", function(){updateDisplay("5")})
-
-// const numberSix = document.querySelector("#num6");
-// numberSix.addEventListener("click", function(){updateDisplay("6")})
-
-// const numberSeven = document.querySelector("#num7");
-// numberSeven.addEventListener("click", function(){updateDisplay("7")})
-
-// const numberEight = document.querySelector("#num8");
-// numberEight.addEventListener("click", function(){updateDisplay("8")})
-
-// const numberNine = document.querySelector("#num9");
-// numberNine.addEventListener("click", function(){updateDisplay("9")})
-
-
-
 
 
 //operator functions
@@ -76,26 +44,16 @@ decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
  
  else
  {if(displayField.innerText.length > 10)
-  {displayField.innerText = "error";
- resetCheck(1)}
+  {displayField.innerText ="error";
+ resetCheck(1)
+}
   else    
   {displayValue = parseInt(displayField.innerText)};}}
 
 
 function updateDisplay(x){displayField.textContent =  displayField.innerText + x; 
         checkLength();}
-  //  if (decimalAllowed == false)   
-  //  {if(displayField.innerText.length > 10)
-  //   {displayField.innerText = "error";}
-  //  else
-  //   {displayValue = parseFloat(displayField.textContent)}}   
-   
-  //  else
-  //  {if(displayField.innerText.length > 10)
-  //   {displayField.innerText = "error";
-  // resetCheck(1)}
-  //   else    
-  //   {displayValue = parseInt(displayField.innerText)};}};
+
 
 
 function decimalCheck(){
@@ -159,9 +117,7 @@ function selectAdd(){
   operator = add;
   resetCheck(0);  
   operandCheck(1);
- 
-}
-
+ }
 
 function selectSubtract(){
   firstNumber = displayValue;
@@ -228,15 +184,6 @@ else if
     }}
 
 
-
-
-
-
-
-
-
-
-
 function operandCheck(value) {
     if (value == 1)
 {
@@ -264,6 +211,112 @@ function operandUpdate() {
 }
 
 
+
+
+//for kb
+document.onkeydown = function(event) {
+
+key = event.keyCode;
+console.log(event.keyCode)
+
+switch (key)
+{
+// 0
+case 48:
+case 96:
+  numberBtn[9].click();
+break;
+// 1
+case 49:
+case 97:
+  numberBtn[6].click();
+break;
+// 2
+case 50:
+case 98:
+  numberBtn[7].click();
+break;
+
+//3
+case 51:
+case 99:
+  numberBtn[8].click();
+break;
+// 4
+case 52:
+case 100:
+  numberBtn[3].click();
+break;
+
+// 5
+case 53:
+case 101:
+  numberBtn[4].click();
+break;
+
+// 6
+case 54:
+case 102:
+  numberBtn[5].click();
+break;
+
+// 7
+case 55:
+case 103:
+// updateDisplay(7);
+numberBtn[0].click();
+break;
+// 8
+case 56:
+case 104:
+  numberBtn[1].click();
+break;
+
+// 9
+case 57:
+case 105:
+  numberBtn[2].click();
+break;
+
+
+//decimal
+case 110:
+case 190:
+  decimalCheck(decimalAllowed);
+  break;
+
+// add
+case 107:
+  selectAdd();
+break;
+
+// subtract
+case 109:
+case 189:
+  selectSubtract();
+  break;
+
+
+  // divide
+  case 111:
+  case 191:
+    selectDivide();
+    break;
+
+
+    // multiply6
+ case 106:
+   selectMultiply();
+   break;
+   
+   
+
+
+case 13:
+operate();
+break;
+
+}}
 
 
 
