@@ -309,6 +309,15 @@ case 189:
    selectMultiply();
    break;
    
+
+  case 8:
+  backspace();
+  break;
+
+  case 35:
+    clear();
+    break;
+
    
 
 
