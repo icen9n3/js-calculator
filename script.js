@@ -2,6 +2,9 @@ let decimalAllowed = true;
 let firstNumber = 0;
 let operator, plus;
 const numberBtn = document.querySelectorAll(".num")
+let displayOverFlow = "";
+let overFlowRound = 0
+
 
 //adds eventlistener to number buttons
 for(i = 0; i < numberBtn.length; i++)
@@ -38,14 +41,46 @@ decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
  function checkLength() {
  if (decimalAllowed == false)   
  {if(displayField.innerText.length > 10)
-  {displayField.innerText = "error";}
+  {
+    displayValue = (parseFloat(displayField.textContent).toPrecision(10));
+    displayField.innerText = "error";
+ 
+  //   displayValue = (parseFloat(displayField.textContent).toPrecision(5));
+  //   overFlowRound = displayValue.toString()
+  //  displayField.innerText = overFlowRound;
+
+
+  //    displayOverFlow += "displayField.textContent";
+  //    clearDisplay(false);   
+  // displayValue = parseFloat(displayOverFlow)
+
+}
  else
   {displayValue = parseFloat(displayField.textContent)}}   
  
  else
  {if(displayField.innerText.length > 10)
-  {displayField.innerText ="error";
- resetCheck(1)
+  {
+
+
+// lastEnteredNum = displayField.innerText.slice(-1) ;
+// displayValue = (parseFloat(displayField.textContent).toPrecision(5));
+
+ 
+// displayValue *=  10
+// displayValue += parseInt(lastEnteredNum) ;
+// overFlowRound = displayValue.toString();
+// displayField.innerText = overFlowRound ;
+
+
+    displayField.innerText ="error";
+//  resetCheck(1)
+//  displayOverFlow += displayField.textContent;
+// clearDisplay(false);
+
+
+// displayValue = parseFloat(displayOverFlow)
+
 }
   else    
   {displayValue = parseInt(displayField.innerText)};}}
@@ -62,7 +97,7 @@ function decimalCheck(){
 decimalAllowed = false}}
 
 
-function clearDisplay(){
+function clearDisplay(decimalAllowed){
 displayField.textContent = "";
 decimalAllowed = true;
 }
@@ -213,7 +248,9 @@ function operandUpdate() {
 
 
 
-//for kb
+//for keyboard
+
+
 document.onkeydown = function(event) {
 
 key = event.keyCode;
@@ -304,9 +341,9 @@ case 189:
     break;
 
 
-    // multiply6
- case 106:
-   selectMultiply();
+    // multiply
+     case 106:
+selectMultiply();
    break;
    
 
