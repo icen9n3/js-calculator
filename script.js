@@ -1,15 +1,17 @@
 let decimalAllowed = true;
 let firstNumber = 0;
 let operator, plus;
-const numberBtn = document.querySelectorAll(".num")
+const numberButtonList = document.querySelectorAll(".num")
 let displayOverFlow = "";
 let overFlowRound = 0
 
 
 //adds eventlistener to number buttons
-for(i = 0; i < numberBtn.length; i++)
-{let addNumBtn = numberBtn[i]
-addNumBtn.addEventListener("click", function(){updateDisplay(addNumBtn.innerText)})}
+for(i = 0; i < numberButtonList.length; i++)
+{
+  let addNumBtn = numberButtonList[i]
+addNumBtn.addEventListener("click", function(){updateDisplay(addNumBtn.innerText)})
+}
 
 
 
@@ -33,8 +35,8 @@ let divide = function (firstNumber, secondNumber)
 
 
 let display = document.getElementById("display")
-const decimal = document.querySelector("#decimal");
 
+const decimal = document.querySelector("#decimal");
 decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
 
 
@@ -44,17 +46,8 @@ decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
   {
     displayValue = (parseFloat(displayField.textContent).toPrecision(10));
     displayField.innerText = "error";
- 
-  //   displayValue = (parseFloat(displayField.textContent).toPrecision(5));
-  //   overFlowRound = displayValue.toString()
-  //  displayField.innerText = overFlowRound;
-
-
-  //    displayOverFlow += "displayField.textContent";
-  //    clearDisplay(false);   
-  // displayValue = parseFloat(displayOverFlow)
-
 }
+
  else
   {displayValue = parseFloat(displayField.textContent)}}   
  
@@ -62,6 +55,7 @@ decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
  {if(displayField.innerText.length > 10)
   {
 
+    displayField.innerText ="error";
 
 // lastEnteredNum = displayField.innerText.slice(-1) ;
 // displayValue = (parseFloat(displayField.textContent).toPrecision(5));
@@ -73,7 +67,6 @@ decimal.addEventListener("click", function(){decimalCheck(decimalAllowed)})
 // displayField.innerText = overFlowRound ;
 
 
-    displayField.innerText ="error";
 //  resetCheck(1)
 //  displayOverFlow += displayField.textContent;
 // clearDisplay(false);
@@ -94,23 +87,23 @@ function updateDisplay(x){displayField.textContent =  displayField.innerText + x
 function decimalCheck(){
   if (decimalAllowed === true)
 { updateDisplay(".");
-decimalAllowed = false}}
+decimalAllowed = false}};
 
 
 function clearDisplay(decimalAllowed){
 displayField.textContent = "";
 decimalAllowed = true;
-}
+};
 
 function clear(){
   firstNumber = "";
   secondNumber = "";
   operator = "";
-  last = displayValue; 
-  lastNum = String(last).slice(-1);   
+  lastDisplayValue = displayValue; 
+  lastDisplayValueToNum = String(lastDisplayValue).slice(-1);
+  // decimalAllowed = true;   
   clearDisplay();
- 
-}
+ };
 
 
 
@@ -119,7 +112,7 @@ function clear(){
 function backspace() {
 editValue = displayField.innerText;
 displayField.innerText = editValue.substring(0, editValue.length - 1)
-checkLength();}
+checkLength();};
 
 
 const backspaceBtn = document.querySelector("#backspace");
@@ -137,7 +130,7 @@ addBtn.addEventListener("click", function(){selectAdd()});
 const subtractBtn = document.querySelector("#subtract");
 subtractBtn.addEventListener("click", function(){selectSubtract()})
 
-  const multiplyBtn = document.querySelector("#multiply");
+const multiplyBtn = document.querySelector("#multiply");
 multiplyBtn.addEventListener("click", function(){selectMultiply()})
 
 const divideBtn = document.querySelector("#divide");
@@ -152,30 +145,28 @@ function selectAdd(){
   operator = add;
   resetCheck(0);  
   operandCheck(1);
- }
+};
 
 function selectSubtract(){
   firstNumber = displayValue;
-  operator = subtract;
-  
+  operator = subtract;  
   resetCheck(0);
   operandCheck(1)
-}
+};
 
 function selectMultiply(){
   firstNumber = displayValue;
-  operator = multiply;
-  
+  operator = multiply;  
   resetCheck(0);
   operandCheck(1)
-}
+};
 
 function selectDivide(){
   firstNumber = displayValue;
   operator = divide;  
   resetCheck(0);
   operandCheck(1)
-}
+};
 
 
 function operate()
@@ -189,61 +180,63 @@ function operate()
   {displayField.textContent = x;}
   displayValue = x ;   
   resetCheck(1);
-  operator = "";}
+  decimalAllowed = true;
+  operator = "";};
 
 
 
   function reset() {
-    let last = displayField.innerText 
+    let lastDisplayValue = displayField.innerText 
     clear();
     resetCheck(0)
-    updateDisplay(lastNum)
-    
-
+    updateDisplay(lastDisplayValueToNum)   
   }
 
- function resetCheck(value) {
+function resetCheck(value) {
 if (value == 1)
 {
 
-for(i=0; i < numberBtn.length; i++)
-  {buttonLoop = numberBtn[i];
-    buttonLoop.addEventListener("click",reset);}
+for(i=0; i < numberButtonList.length; i++)
+  {buttonsListNumber = numberButtonList[i];
+    buttonsListNumber.addEventListener("click",reset);}
   }
 
 else if 
 (value == 0)
- {for(i=0; i < numberBtn.length; i++)
-    {buttonLoop = numberBtn[i];
-      buttonLoop.removeEventListener("click",reset);}
-    }}
+ {for(i=0; i < numberButtonList.length; i++)
+    {buttonsListNumber = numberButtonList[i];
+      buttonsListNumber.removeEventListener("click",reset);}
+    }};
 
 
+
+    //adds and removes number button  event listeners after operand
+    // is selected. removes event listeners when a number button is entered
 function operandCheck(value) {
     if (value == 1)
 {
-
-for(i=0; i < numberBtn.length; i++)
-  {buttonLoop = numberBtn[i];
-    buttonLoop.addEventListener("click",operandUpdate);}
+  for(i=0; i < numberButtonList.length; i++)
+  {buttonsListNumber = numberButtonList[i];
+    buttonsListNumber.addEventListener("click",operandUpdate);}
   }
 
 else if 
 (value == 0)
- {for(i=0; i < numberBtn.length; i++)
-    {buttonLoop = numberBtn[i];
-      buttonLoop.removeEventListener("click",operandUpdate);}
-    }}
+ {
+   for(i=0; i < numberButtonList.length; i++)
+    {buttonsListNumber = numberButtonList[i];
+      buttonsListNumber.removeEventListener("click",operandUpdate);}
+  }};
 
 
 function operandUpdate() {
-  last = displayValue; 
-  lastNum = String(last).slice(-1);   
+  decimalAllowed = true;
+  lastDisplayValue = displayValue; 
+  lastDisplayValueToNum = String(lastDisplayValue).slice(-1);   
   clearDisplay();
-  operandCheck(0);
-  updateDisplay(lastNum)
-
-}
+  operandCheck(0);  
+  updateDisplay(lastDisplayValueToNum);
+};
 
 
 
@@ -258,61 +251,61 @@ console.log(event.keyCode)
 
 switch (key)
 {
-// 0
+// key: 0
 case 48:
 case 96:
-  numberBtn[9].click();
+  numberButtonList[9].click();
 break;
-// 1
+// key: 1
 case 49:
 case 97:
-  numberBtn[6].click();
+  numberButtonList[6].click();
 break;
-// 2
+// key: 2
 case 50:
 case 98:
-  numberBtn[7].click();
+  numberButtonList[7].click();
 break;
 
-//3
+// key: 3
 case 51:
 case 99:
-  numberBtn[8].click();
+  numberButtonList[8].click();
 break;
-// 4
+// key: 4
 case 52:
 case 100:
-  numberBtn[3].click();
+  numberButtonList[3].click();
 break;
 
-// 5
+// key: 5
 case 53:
 case 101:
-  numberBtn[4].click();
+  numberButtonList[4].click();
 break;
 
-// 6
+// key: 6
 case 54:
 case 102:
-  numberBtn[5].click();
+  numberButtonList[5].click();
 break;
 
-// 7
+// key: 7
 case 55:
 case 103:
 // updateDisplay(7);
-numberBtn[0].click();
+numberButtonList[0].click();
 break;
-// 8
+// key: 8
 case 56:
 case 104:
-  numberBtn[1].click();
+  numberButtonList[1].click();
 break;
 
-// 9
+// key: 9
 case 57:
 case 105:
-  numberBtn[2].click();
+  numberButtonList[2].click();
 break;
 
 
